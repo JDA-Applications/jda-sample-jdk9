@@ -16,23 +16,28 @@
 
 plugins {
     id'java'
-    id'com.github.johnrengelman.shadow' version '2.0.1'
+    id'com.github.johnrengelman.shadow' version '4.0.4'
 }
+
+def cp_delimiter = ";"
 
 version '1.0'
 ext.moduleName = 'club.minnced.bot.handle'
-sourceCompatibility = 9
+sourceCompatibility = 11
 
 dependencies {
-    compile 'net.dv8tion:JDA:3.3.1_286'
+    compile 'net.dv8tion:JDA:3.8.3_463'
     compile 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 compileJava {
     inputs.property("moduleName", moduleName)
     doFirst {
+        def path = classpath.asPath.split(cp_delimiter).findAll {
+            it.endsWith '.jar'
+        }.join(cp_delimiter)
         options.compilerArgs = [
-                '--module-path', classpath.asPath
+                '--module-path', path
         ]
         classpath = files()
     }

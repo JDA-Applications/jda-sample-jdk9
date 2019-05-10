@@ -1,4 +1,3 @@
-*.properties
 out/
 build/
 .idea/
