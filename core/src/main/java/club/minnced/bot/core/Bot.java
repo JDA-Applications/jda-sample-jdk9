@@ -18,9 +18,8 @@ package club.minnced.bot.core;
 
 import club.minnced.bot.handle.MessageListener;
 import club.minnced.bot.handle.ReadyListener;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import net.dv8tion.jda.api.AccountType;
+import net.dv8tion.jda.api.JDABuilder;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
@@ -30,23 +29,23 @@ import java.util.Properties;
 public class Bot
 {
     public static void main(String[] args)
-    throws LoginException, InterruptedException, RateLimitedException, IOException
+        throws LoginException, IOException
     {
         new Bot().init();
     }
 
     public void init()
-    throws LoginException, InterruptedException, RateLimitedException, IOException
+        throws LoginException, IOException
     {
-        Properties tokens = loadConfig("tokens.properties");
+        Properties tokens = loadConfig("/tokens.properties");
         new JDABuilder(AccountType.BOT)
                 .setToken(tokens.getProperty("bot"))
-                .addEventListener(new ReadyListener(), new MessageListener())
-                .buildBlocking();
+                .addEventListeners(new ReadyListener(), new MessageListener())
+                .build();
     }
 
     private Properties loadConfig(String name)
-    throws IOException
+        throws IOException
     {
         InputStream in = getClass().getModule().getResourceAsStream(name);
         Properties props = new Properties();

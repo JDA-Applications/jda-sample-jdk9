@@ -16,17 +16,18 @@
 
 package club.minnced.bot.handle;
 
-import net.dv8tion.jda.core.events.Event;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.EventListener;
+import net.dv8tion.jda.api.events.GenericEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.EventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MessageListener implements EventListener
 {
     private static final Logger LOG = LoggerFactory.getLogger("Chat");
+
     @Override
-    public void onEvent(Event event)
+    public void onEvent(GenericEvent event)
     {
         if (event instanceof MessageReceivedEvent)
             onMessage((MessageReceivedEvent) event);

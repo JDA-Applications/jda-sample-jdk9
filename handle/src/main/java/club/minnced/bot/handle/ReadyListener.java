@@ -16,15 +16,15 @@
 
 package club.minnced.bot.handle;
 
-import net.dv8tion.jda.core.events.Event;
-import net.dv8tion.jda.core.events.ReadyEvent;
-import net.dv8tion.jda.core.hooks.EventListener;
+import net.dv8tion.jda.api.events.GenericEvent;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.hooks.EventListener;
 import org.slf4j.LoggerFactory;
 
 public class ReadyListener implements EventListener
 {
     @Override
-    public void onEvent(Event event)
+    public void onEvent(GenericEvent event)
     {
         if (event instanceof ReadyEvent)
             LoggerFactory.getLogger(ReadyListener.class).info("Successful ready!");

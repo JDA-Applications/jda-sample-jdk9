@@ -1,5 +1,5 @@
 module club.minnced.bot.handle {
-    requires JDA;
+    requires net.dv8tion.jda;
     requires logback.classic;
     requires slf4j.api;
 
