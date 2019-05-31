@@ -24,15 +24,18 @@ ext.moduleName = 'club.minnced.bot.handle'
 sourceCompatibility = 11
 
 dependencies {
-    compile 'net.dv8tion:JDA:4+'
+    compile 'net.dv8tion:JDA:4.ALPHA.0_92'
     compile 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 compileJava {
     inputs.property("moduleName", moduleName)
     doFirst {
+        def path = classpath.findAll {
+            it.name.endsWith(".jar")
+        }.join(";")
         options.compilerArgs = [
-            '--module-path', classpath.asPath
+            '--module-path', path
         ]
         classpath = files()
     }
