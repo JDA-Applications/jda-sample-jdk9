@@ -26,10 +26,12 @@ ext.moduleName = 'club.minnced.bot.core'
 sourceCompatibility = 11
 
 dependencies {
-    compile project(':handle')
-    compile 'net.dv8tion:JDA:4.ALPHA.0_92'
-    compile 'ch.qos.logback:logback-classic:1.2.3'
-    compile 'com.sedmelluq:lavaplayer:1.3.17'
+    implementation project(':handle')
+    implementation ('net.dv8tion:JDA:4.1.1_108') {
+        exclude module: "opus-java"
+    }
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'com.sedmelluq:lavaplayer:1.3.34'
     // This doesn't work with JDA 4 at the time of writing
 //    compile ('com.sedmelluq:jda-nas:1.0.6') {
 //        exclude group: 'net.dv8tion'

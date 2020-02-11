@@ -24,8 +24,10 @@ ext.moduleName = 'club.minnced.bot.handle'
 sourceCompatibility = 11
 
 dependencies {
-    compile 'net.dv8tion:JDA:4.ALPHA.0_92'
-    compile 'ch.qos.logback:logback-classic:1.2.3'
+    implementation ('net.dv8tion:JDA:4.1.1_108') {
+        exclude module: "opus-java"
+    }
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 compileJava {
